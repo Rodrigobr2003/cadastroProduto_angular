@@ -9,6 +9,7 @@
         class="form-control"
         id="inputNome"
         placeholder="Nome do produto"
+        [(ngModel)]="nomeProduto"
       />
     </div>
 
@@ -19,6 +20,7 @@
         class="form-control"
         id="inputId"
         placeholder="ID do produto"
+        [(ngModel)]="idProduto"
       />
     </div>
   </div>
@@ -29,6 +31,7 @@
       id="inputDescricao"
       rows="3"
       placeholder="Descrição do produto"
+      [(ngModel)]="descricao"
     ></textarea>
   </div>
   <div class="form-row">
@@ -39,6 +42,7 @@
         class="form-control"
         id="inputPreco"
         placeholder="Preço do produto"
+        [(ngModel)]="preco"
       />
     </div>
     <div class="form-group col-md-6">
@@ -48,14 +52,18 @@
         class="form-control"
         id="inputQuantidade"
         placeholder="Quantidade do produto"
+        [(ngModel)]="quantidade"
       />
     </div>
   </div>
-  <button class="btn btn-primary">Cadastrar</button>
+  <button class="btn btn-primary" (click)="addProduto()">Cadastrar</button>
 </div>
 
-<div class="container mt-5 produto">
+<div class="container mt-5 produto" *ngIf="listaProdutos.length > 0">
   <h2>Produtos Disponíveis</h2>
 
-  <app-cadastro-prdutos></app-cadastro-prdutos>
+  <app-cadastro-prdutos
+    *ngFor="let p of listaProdutos"
+    [produto]="p"
+  ></app-cadastro-prdutos>
 </div>
